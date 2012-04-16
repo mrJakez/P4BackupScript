@@ -2,10 +2,10 @@
 #
 #	 ########################################################################
 #	#                                                                        #
-#	#	P4 TRIVIAL BACKUP SCRIPT											 #
-#	#																		 #
-#	#	this script generates a full(!) backup on each run                   #
-#	#	(c) 2011 by Dennis Rochel, jakez@imount.de							 #
+#	#	P4 TRIVIAL BACKUP SCRIPT					 #
+#	#									 #
+#	#	this script generates a full(!) backup on each run               #
+#	#	(c) 2011 by Dennis Rochel, jakez@imount.de			 #
 #	#                                                                        #
 #	 ########################################################################
 #
