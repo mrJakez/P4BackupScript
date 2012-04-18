@@ -3,7 +3,7 @@
 #	 ########################################################################
 #	#                                                                        #
 #	#	P4 TRIVIAL BACKUP SCRIPT					 #
-#	#									 #
+#	#																		 #
 #	#	this script generates a full(!) backup on each run               #
 #	#	(c) 2011 by Dennis Rochel, jakez@imount.de			 #
 #	#                                                                        #
@@ -29,7 +29,7 @@ BACKUP_VOLUME=/dev/disk1s2
 BACKUP_PATH=/Volumes/Backup/p4Backup/
 
 #the path for the backup logfile
-LOGFILE_PATH=$BACKUP_PATH"logfile.log"
+LOGFILE_PATH="/var/log/backup.log"
 
 #the svn repositories which should be backed up!
 SVN_REPOSITORIES="Sonntagseifen iGallery iBahn iFreetz coolibriApp xtraApp"
@@ -123,7 +123,7 @@ then
 	#get the backup-size of the CURRENT backup run	
 	CURRENT_BACKUP_SIZE=$(du -ks $CURRENT_BACKUP_DIR | awk '{print $1}')
 		
-	if (("$CURRENT_BACKUP_DIR" < "$LAST_BACKUP_SIZE"))
+	if (("$CURRENT_BACKUP_SIZE" < "$LAST_BACKUP_SIZE"))
 	then
 		log 'the current backup is smaller than the backup before - please check backup file manually. CURRENT_BACKUP_SIZE: '$CURRENT_BACKUP_SIZE'kb - LAST_BACKUP_SIZE: '$LAST_BACKUP_SIZE'kb' 1
 		HAS_ERROR=1
