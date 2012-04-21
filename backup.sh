@@ -122,6 +122,9 @@ then
 	
 	#get the backup-size of the CURRENT backup run	
 	CURRENT_BACKUP_SIZE=$(du -ks $CURRENT_BACKUP_DIR | awk '{print $1}')
+	CURRENT_BACKUP_SIZE_MB==$(($CURRENT_BACKUP_SIZE/1024))
+	
+	log 'current backup size: '$CURRENT_BACKUP_SIZE_MB'MB ('$CURRENT_BACKUP_SIZE'kb)' 0
 		
 	if (("$CURRENT_BACKUP_SIZE" < "$LAST_BACKUP_SIZE"))
 	then
@@ -162,11 +165,14 @@ then
 		fi
 	fi
 	
+	#leave the backup volume
+	cd /
+	
 	#unmount the backup-disk
 	/usr/sbin/diskutil unmount $BACKUP_VOLUME
 	
 	#check if the unmount was successfully
-	if mount | grep "${BACKUP_VOLUME}" > /dev/null
+	if /sbin/mount | grep "${BACKUP_VOLUME}" > /dev/null
 	then
 		log "Unmount of the Backup-Dir failed." 1
 	fi
